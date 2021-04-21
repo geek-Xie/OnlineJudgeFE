@@ -19,7 +19,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#hidden-source-map' : false,
+  // devtool: config.build.productionSourceMap ? '#hidden-source-map' : false,
+  devtool: config.build.productionSourceMap ? 'source-map' : false,  // 使得js与js.map文件能够相互关联，方便找到原代码中的错误位置
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
