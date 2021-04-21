@@ -23,7 +23,7 @@ export default {
     })
   },
   login (data) {
-    return ajax('login', 'post', {
+    return ajax('login', 'get', {
       data
     })
   },
@@ -72,7 +72,7 @@ export default {
     })
   },
   tfaRequiredCheck (username) {
-    return ajax('tfa_required', 'post', {
+    return ajax('tfa_required', 'get', {
       data: {
         username
       }
@@ -293,6 +293,10 @@ function ajax (url, method, options) {
     }).then(res => {
       // API正常返回(status=20x), 是否错误通过有无error判断
       if (res.data.error !== null) {
+        // console.log('res', res)
+        // console.log('res.status', res.status)
+        // console.log('res.data.data', res.data.data)
+        // console.log('res.data.error', res.data.error)
         Vue.prototype.$error(res.data.data)
         reject(res)
         // 若后端返回为登录，则为session失效，应退出当前登录用户
